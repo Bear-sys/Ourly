@@ -1,0 +1,12 @@
+App Description: Conceptually, it is similar to BeReal, where every hour, users are asked to take a dual camera photo to post for friends to see. It is designed for friends, lovers, family members, etc. to connect over long distance and see how one another lives separate lives but somehow feels connected with one another.
+
+Purposes of each file:
+- OurlyApp: launches app and manage global state
+- views: UI screens
+- viewModels; connect UI with data and services
+- models: data strictures
+- services: talk to firebase and notifs
+- utilities: extra tools for picking an image
+- resources: images, icons
+- info.plst: app settings
+- firebase: configuration for backend services
