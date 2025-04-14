@@ -11,13 +11,15 @@ import Firebase
 @main
 struct OurlyApp: App {
     
+    #if !DEBUG
     init() {
         FirebaseApp.configure()
     }
+    #endif
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            SplashScreen()
         }
     }
 }

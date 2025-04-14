@@ -16,10 +16,12 @@ struct LoginView: View {
     @State private var isLoggedIn = false
     
     init() {
-            if Auth.auth().currentUser != nil {
-                _isLoggedIn = State(initialValue: true)
-            }
+        if FirebaseApp.app() != nil, Auth.auth().currentUser != nil {
+            _isLoggedIn = State(initialValue: true)
+        } else {
+            _isLoggedIn = State(initialValue: false)
         }
+    }
     
     var body: some View {
         NavigationStack {
@@ -34,7 +36,7 @@ struct LoginView: View {
                     VStack(spacing: 20) {
                         // image
                         Spacer()
-                        Image("Open Screen")
+                        Image("SplashScreen")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 400, height: 400)
