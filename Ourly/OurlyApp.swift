@@ -11,15 +11,27 @@ import Firebase
 @main
 struct OurlyApp: App {
     
-    #if !DEBUG
+    @StateObject var authViewModel = AuthViewModel()
+    @State private var Splash = false
+    
     init() {
         FirebaseApp.configure()
     }
-    #endif
     
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            Group {
+                if (Splash) {
+                    if authViewModel.isLoggedIn {
+                        FeedView()
+                    } else {
+                        LoginView()
+                    }
+                } else {
+                    SplashScreen(isActive: $Splash)
+                }
+            }
+            .environmentObject(authViewModel)
         }
     }
 }

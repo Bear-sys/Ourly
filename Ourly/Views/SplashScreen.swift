@@ -9,29 +9,25 @@ import SwiftUI
 
 struct SplashScreen: View {
     
-    @State private var isActive = false
+    @Binding var isActive: Bool
     
     var body: some View {
-        if isActive {
-            LoginView()
-        } else {
-            ZStack {
-                //backgorund image
-                Color(.white)
-                    .ignoresSafeArea()
-                
-                VStack {
-                    Image("SplashScreen")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                }
+        ZStack {
+            //background image
+            Color(.white)
+                .ignoresSafeArea()
+            
+            VStack {
+                Image("SplashScreen")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
             }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation {
-                        isActive = true
-                    }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    isActive = true
                 }
             }
         }
@@ -40,8 +36,9 @@ struct SplashScreen: View {
 
 
 
+
 struct SplashScreen_Preview: PreviewProvider {
     static var previews: some View {
-        SplashScreen()
+        SplashScreen(isActive: .constant(false))
     }
 }
